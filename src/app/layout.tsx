@@ -21,8 +21,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${lato.variable} antialiased h-dvh w-screen`}>
+    <html lang="pt-BR" className="scroll-smooth">
+      <body className={`${lato.variable} antialiased w-full`}>
         <Providers>{children}</Providers>
       </body>
     </html>
