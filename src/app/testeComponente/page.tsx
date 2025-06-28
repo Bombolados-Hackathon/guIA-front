@@ -3,6 +3,7 @@
 import FlashCard from "@/components/ui/flashcard"
 import RadioCards from "@/components/ui/radiobutton"
 import { Progress } from "@/components/ui/progress"
+import { DialogBox } from "@/components/ui/dialogBox"
 import { useState, useEffect } from "react"
 
 export default function TesteComponente() {
@@ -42,6 +43,7 @@ export default function TesteComponente() {
         marginTop: "50px", display: "flex", justifyContent: "center", alignItems: "center"
       }}>
         <Progress value={progress} color="#0E7C7B" />
+        <DialogBox onClose={() => console.log("a")} variant="desafio"   />
       </div>
 
     </div>
