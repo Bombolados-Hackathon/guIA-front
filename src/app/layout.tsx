@@ -1,11 +1,17 @@
 import type { Metadata } from 'next'
 
-import { Lato } from 'next/font/google'
+import { Lato, Raleway } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
 
 const lato = Lato({
   variable: '--font-lato',
+  subsets: ['latin'],
+  weight: ['100', '300', '400', '700', '900'],
+})
+
+const raleway = Raleway({
+  variable: '--font-raleway',
   subsets: ['latin'],
   weight: ['100', '300', '400', '700', '900'],
 })
@@ -22,7 +28,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className="scroll-smooth">
-      <body className={`${lato.variable} antialiased w-full`}>
+      <body
+        className={`${lato.variable} ${raleway.variable} antialiased w-full`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>
