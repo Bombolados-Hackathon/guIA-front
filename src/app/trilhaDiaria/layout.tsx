@@ -10,9 +10,7 @@ export default function TrilhaLayout({
         <SidebarProvider defaultOpen>
             <AppSidebar />
             <SidebarTrigger />
-            <main>
-                {children}
-            </main>
+            <main>{children}</main>
         </SidebarProvider>
     )
 }

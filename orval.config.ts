@@ -1,3 +1,4 @@
+// orval.config.ts
 import { defineConfig } from 'orval'
 
 export default defineConfig({
@@ -8,12 +9,11 @@ export default defineConfig({
       target: './src/http/generated/endpoints',
       schemas: './src/http/generated/modelTypes',
       client: 'react-query',
-      httpClient: 'axios',
       mode: 'split',
       override: {
         mutator: {
-          path: './src/http/axios.ts',
-          name: 'customMutator',
+          path: './src/http/client.ts', // 👈 caminho relativo ao arquivo que será gerado
+          name: 'customFetcher',
         },
       },
     },
