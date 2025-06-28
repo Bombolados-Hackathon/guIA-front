@@ -22,7 +22,7 @@ export default function Home() {
       <main className="h-screen w-full overflow-y-scroll scroll-smooth [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <section
           id="home"
-          className="h-screen flex gap-4 px-20 bg-gradient-to-br from-green-50 to-blue-50 not-sm:flex-col not-sm:px-5 not-sm:items-center not-sm:justify-center"
+          className="h-screen flex gap-4 px-20 bg-gradient-to-br from-green-50 to-blue-50 not-sm:flex-col not-sm:px-5 not-sm:items-center not-sm:justify-center items-center"
         >
           <div id="esquerda" className="max-w-[50%] not-sm:max-w-[90%]">
             <div>
@@ -42,8 +42,11 @@ export default function Home() {
               </div>
             </div>
             <div className="flex gap-3 mb-6">
-              <Button className="bg-green-500 text-white hover:bg-green-600 transition-colors">
-                Começar agora
+              <Button
+                asChild
+                className="bg-green-500 text-white hover:bg-green-600 transition-colors"
+              >
+                <Link href="/trilhaDiaria">Começar agora</Link>
               </Button>
               <Button variant={'secondary'} asChild>
                 <Link href="#about">Saiba mais</Link>

@@ -25,17 +25,17 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     {
       title: 'Pendências',
       url: '/pendencias',
-      icon: Feather,
+      icon: RotateCcw,
     },
     {
       title: 'Missões Semanais',
       url: '/missoesSemanais',
-      icon: TrendingUp,
+      icon: Feather,
     },
     {
       title: 'Ranking',
       url: '/ranking',
-      icon: RotateCcw,
+      icon: TrendingUp,
     },
   ]
 

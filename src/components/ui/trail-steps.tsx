@@ -39,7 +39,7 @@ export function TrailStep({ number, status, isLast = false }: TrailStepProps) {
     <div className="flex items-center">
       <div
         className={cn(
-          'w-20 h-20 rounded-full border-4 flex items-center justify-center text-2xl font-bold transition-all duration-300 cursor-pointer hover:scale-110 hover:shadow-lg',
+          'w-20 h-20 rounded-full border-4 flex items-center justify-center text-2xl font-bold',
           getStepStyles(),
         )}
       >

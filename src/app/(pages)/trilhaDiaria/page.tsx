@@ -16,7 +16,7 @@ interface Step {
 export default function TrailDemo() {
   const [currentStep, setCurrentStep] = useState(2)
 
-  const generateSteps = (current: number, total = 7): Step[] => {
+  const generateSteps = (current: number, total = 6): Step[] => {
     return Array.from({ length: total }, (_, index) => {
       const stepNumber = index + 1
       let status: StepStatus

@@ -3,8 +3,6 @@ import type { Metadata } from 'next'
 import { Lato, Raleway } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
-import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
-import { AppSidebar } from '@/components/app-sidebar'
 
 const lato = Lato({
   variable: '--font-lato',
@@ -29,16 +27,11 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-BR" className="scroll-smooth">
+    <html lang="pt-BR" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${lato.variable} ${raleway.variable} antialiased w-full`}
       >
-        <SidebarProvider defaultOpen>
-          <AppSidebar />
-          <SidebarTrigger />
-          <Providers>{children}</Providers>
-        </SidebarProvider>
-        
+        <Providers>{children}</Providers>
       </body>
     </html>
   )
