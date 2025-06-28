@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import { Lato, Raleway } from 'next/font/google'
 import './globals.css'
 import Providers from '@/components/Providers'
+import { SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
+import { AppSidebar } from '@/components/app-sidebar'
 
 const lato = Lato({
   variable: '--font-lato',
@@ -31,7 +33,12 @@ export default function RootLayout({
       <body
         className={`${lato.variable} ${raleway.variable} antialiased w-full`}
       >
-        <Providers>{children}</Providers>
+        <SidebarProvider defaultOpen>
+          <AppSidebar />
+          <SidebarTrigger />
+          <Providers>{children}</Providers>
+        </SidebarProvider>
+        
       </body>
     </html>
   )
