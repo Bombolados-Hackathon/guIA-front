@@ -3,7 +3,9 @@
 import FlashCard from "@/components/ui/flashcard"
 import RadioCards from "@/components/ui/radiobutton"
 import { Progress } from "@/components/ui/progress"
+import { DialogBox } from "@/components/ui/dialogBox"
 import { useState, useEffect } from "react"
+import {CardXp} from "@/components/ui/cardXP"
 
 export default function TesteComponente() {
 
@@ -32,16 +34,17 @@ export default function TesteComponente() {
   }, [])
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", height: "100vh" }}>
       <FlashCard back="Paris" front="What is the capital of France?" category="B" />
       <RadioCards variant="connection" connectionOptions={minhasLigacoes} />
       <RadioCards variant="trueFalse" />
       <RadioCards variant="alternatives" options={minhasOpçoes} />
-      <div style={{
-        width: "60%", marginBottom: "50px",
-        marginTop: "50px", display: "flex", justifyContent: "center", alignItems: "center"
-      }}>
+      <div>
         <Progress value={progress} color="#0E7C7B" />
+        <DialogBox onClose={() => console.log("a")} variant="revisão"   />
+      </div>
+      <div style={{ marginTop: "50px" }}>
+        <CardXp />
       </div>
 
     </div>
