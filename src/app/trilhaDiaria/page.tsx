@@ -56,9 +56,9 @@ export default function TrailDemo() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto">
-        <ScrollArea className="w-full">
+        <ScrollArea >
           <TrailPath steps={steps} title="Trilha Diária" xpValue={300} />
-          <Scrollbar orientation='horizontal' />
+          <Scrollbar orientation='horizontal' style={{color: "#000"}} />
         </ScrollArea>
 
 
