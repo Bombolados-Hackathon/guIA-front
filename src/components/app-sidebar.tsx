@@ -1,91 +1,93 @@
-"use client"
+'use client'
 
 import {
-    Sidebar,
-    SidebarContent,
-    SidebarGroup,
-    SidebarGroupContent,
-    SidebarHeader,
-    SidebarMenu,
-    SidebarMenuButton,
-    SidebarMenuItem,
-    SidebarFooter,
-} from "@/components/ui/sidebar"
-import Link from "next/link"
-import { useState } from "react"
-import Image from "next/image"
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupContent,
+  SidebarHeader,
+  SidebarMenu,
+  SidebarMenuButton,
+  SidebarMenuItem,
+  SidebarFooter,
+  SidebarRail,
+} from '@/components/ui/sidebar'
+import { Calendar, Feather, RotateCcw, TrendingUp } from 'lucide-react'
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 
-export function AppSidebar() {
-    const [activeItem, setActiveItem] = useState("Trilha Diária")
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const links = [
+    {
+      title: 'Trilha Diária',
+      url: '/trilhaDiaria',
+      icon: Calendar,
+    },
+    {
+      title: 'Pendências',
+      url: '/pendencias',
+      icon: Feather,
+    },
+    {
+      title: 'Missões Semanais',
+      url: '/missoesSemanais',
+      icon: TrendingUp,
+    },
+    {
+      title: 'Ranking',
+      url: '/ranking',
+      icon: RotateCcw,
+    },
+  ]
 
-    const links = [
-        {
-            title: "Trilha Diária",
-            url: "#",
-        },
-        {
-            title: "Pendências",
-            url: "#",
-        },
-        {
-            title: "Missões Semanais",
-            url: "#",
-        },
-        {
-            title: "Ranking",
-            url: "#",
-        },
-    ]
+  return (
+    <Sidebar {...props}>
+      {/* Container com gradiente e flex para empurrar o footer para baixo */}
+      <div className="h-full bg-gradient-to-b from-emerald-400 via-teal-500 to-blue-600 flex flex-col">
+        <SidebarHeader className="p-6 flex-shrink-0">
+          <div className="text-white text-center">
+            <h1 className="text-3xl font-raleway font-bold">GuIA</h1>
+          </div>
+        </SidebarHeader>
 
-    return (
-        <Sidebar className="px-4 py-6 bg-white">
-            <SidebarHeader className="items-start bg-white mb-6">
-                <h1 className="text-2xl font-bold text-black">GuIA</h1>
-            </SidebarHeader>
+        <SidebarContent className="px-4 flex-1">
+          <SidebarGroup>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {links.map((item) => (
+                  <SidebarMenuItem key={item.title}>
+                    <SidebarMenuButton
+                      asChild
+                      className="text-white hover:bg-white/20 hover:text-white transition-colors duration-200 mb-2 h-12"
+                    >
+                      <a href={item.url} className="flex items-center gap-3">
+                        <item.icon className="h-5 w-5 font-bold" />
+                        <span className="font-bold">{item.title}</span>
+                      </a>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                ))}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
+        </SidebarContent>
 
-            <SidebarContent className="bg-white">
-                <SidebarGroup>
-                    <SidebarGroupContent>
-                        <SidebarMenu className="items-start gap-3">
-                            {links.map((item) => (
-                                <SidebarMenuItem className="m-2.5" key={item.title}>
-                                    <SidebarMenuButton
-                                        asChild
-                                        isActive={activeItem === item.title}
-                                        className="data-[active=true]:bg-[#DCE5FF] data-[active=true]:border-2 data-[active=true]:border-[#7B8ADF] data-[active=true]:text-black hover:bg-[#F3F2FF] rounded-full px-6 py-3"
-                                    >
-                                        <Link
-                                            href={item.url}
-                                            className="flex items-center justify-between"
-                                            onClick={() => setActiveItem(item.title)}
-                                        >
-                                            <span className="text-black text-lg font-bold font-cabin leading-snug">{item.title}</span>
-                                        </Link>
-                                    </SidebarMenuButton>
-                                </SidebarMenuItem>
-                            ))}
-                        </SidebarMenu>
-                    </SidebarGroupContent>
-                </SidebarGroup>
-            </SidebarContent>
-
-            <SidebarFooter className="bg-white mt-auto pt-4 border-t border-gray-200">
-                <div className="flex items-center gap-3 p-2">
-                    <div className="relative w-10 h-10 rounded-full overflow-hidden bg-gray-300">
-                        <Image
-                            src="/placeholder.svg?height=40&width=40"
-                            alt="Profile picture"
-                            width={40}
-                            height={40}
-                            className="object-cover"
-                        />
-                    </div>
-                    <div className="flex flex-col">
-                        <span className="text-sm font-semibold text-black">Osvaldo Silva Jr.</span>
-                        <span className="text-xs text-gray-500">Nível 5 • 1200 XP</span>
-                    </div>
-                </div>
-            </SidebarFooter>
-        </Sidebar>
-    )
+        {/* Footer fixo no final */}
+        <SidebarFooter className="p-4 flex-shrink-0 mt-auto">
+          <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3 backdrop-blur-sm">
+            <Avatar className="h-10 w-10">
+              <AvatarImage src="/placeholder.svg?height=40&width=40" />
+              <AvatarFallback className="bg-white/20 text-white font-semibold">
+                OS
+              </AvatarFallback>
+            </Avatar>
+            <div className="flex-1 text-white">
+              <p className="font-semibold text-sm">Osvaldo Silva Jr.</p>
+              <p className="text-xs text-white/80">1.500 xp</p>
+            </div>
+          </div>
+        </SidebarFooter>
+      </div>
+      <SidebarRail />
+    </Sidebar>
+  )
 }

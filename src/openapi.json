@@ -4,11 +4,6 @@
     "title": "API Hackathon – AVA",
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "http://192.168.1.100:8000"
-    }
-  ],
   "paths": {
     "/api/v1/users/{user_id}/xp": {
       "get": {
@@ -54,6 +49,51 @@
           }
         }
       }
+    },
+    "/api/v1/tasks/{task_id}/xp": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Retorna XP ganho ao concluir tarefa",
+        "operationId": "get_user_xp_api_v1_tasks__task_id__xp_get",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Task Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskXPValueResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tarefa não encontrada"
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -70,6 +110,19 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "TaskXPValueResponse": {
+        "properties": {
+          "xp": {
+            "type": "integer",
+            "title": "Xp"
+          }
+        },
+        "type": "object",
+        "required": [
+          "xp"
+        ],
+        "title": "TaskXPValueResponse"
       },
       "UserXPResponse": {
         "properties": {

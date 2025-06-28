@@ -6,6 +6,7 @@ import { StepStatus } from '@/components/ui/trail-steps'
 import { TrailPath } from '@/components/ui/trail-path'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Scrollbar } from '@radix-ui/react-scroll-area'
+import { SidebarTrigger } from '@/components/ui/sidebar'
 
 interface Step {
   id: number
@@ -54,7 +55,8 @@ export default function TrailDemo() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen w-full bg-gradient-to-b from-green-300/0 to-cyan-700/50 py-8">
+      <SidebarTrigger />
       <div className="container mx-auto">
         <ScrollArea>
           <TrailPath steps={steps} title="Trilha Diária" xpValue={300} />
